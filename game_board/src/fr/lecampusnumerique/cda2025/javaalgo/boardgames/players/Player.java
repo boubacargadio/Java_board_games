@@ -44,5 +44,13 @@ public abstract class Player {
         isArtificial = artificial;
     }
 
-    public int[] getPlayerMove(int[] move){return move;};
+    public String getRepresentation() {
+        return getSymbol().getRepresentation();
+    }
+
+    public int[] getPlayerMove(int[] move) {
+        return move;
+    }
+
+    ;
 }
