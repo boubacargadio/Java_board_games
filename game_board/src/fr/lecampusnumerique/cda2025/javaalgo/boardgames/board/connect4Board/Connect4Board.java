@@ -1,4 +1,4 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.connect4Board;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.board.connect4Board;
 
 public class Connect4Board {
 //    int getAmountOfColumns();
