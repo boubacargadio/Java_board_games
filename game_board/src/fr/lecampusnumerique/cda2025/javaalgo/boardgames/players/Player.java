@@ -2,55 +2,19 @@ package fr.lecampusnumerique.cda2025.javaalgo.boardgames.players;
 
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbols;
 
-public abstract class Player {
-    private int number;
-    private Symbols symbol;
-    private boolean isArtificial;
+public interface Player {
 
-    public Player(int number, Symbols symbol, boolean isArtificial) {
-        this.number = number;
-        this.symbol = symbol;
-        this.isArtificial = isArtificial;
-    }
+    void setNumber(int number);
 
+    Symbols getSymbol();
 
-    // **
-    // *****
-    // ********* METHODS
-    // *****
-    // **
+    void setSymbol(Symbols symbol);
 
-    public int getNumber() {
-        return number;
-    }
+    boolean isArtificial();
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
+    void setArtificial(boolean artificial);
 
-    protected Symbols getSymbol() {
-        return this.symbol;
-    }
+    String getRepresentation();
 
-    protected void setSymbol(Symbols symbol) {
-        this.symbol = symbol;
-    }
-
-    public boolean isArtificial() {
-        return isArtificial;
-    }
-
-    public void setArtificial(boolean artificial) {
-        isArtificial = artificial;
-    }
-
-    public String getRepresentation() {
-        return getSymbol().getRepresentation();
-    }
-
-    public int[] getPlayerMove(int[] move) {
-        return move;
-    }
-
-    ;
+    int[] getPlayerMove(int[] move);
 }
