@@ -1,4 +1,4 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.TicTacToe;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
 
 public class TicTacToe {
     int getAmountOfColumns() {
