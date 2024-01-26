@@ -1,12 +1,12 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.cell;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.board;
 
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.EmptySymbol;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbols;
 
-public class AbstractCell implements Cell {
+public class Cell {
     private Symbols symbol;
-
-    protected AbstractCell(Symbols symbol) {
-        this.symbol = symbol;
+    protected Cell() {
+        this.symbol = EmptySymbol.EMPTY;
     }
 
     public Symbols getSymbol() {
