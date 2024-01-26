@@ -1,4 +1,4 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
 
-public class BomokuGame extends AbstractGame {
+public class GomokuGame extends AbstractGame {
 }
