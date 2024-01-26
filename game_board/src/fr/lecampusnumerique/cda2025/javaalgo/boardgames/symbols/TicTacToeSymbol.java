@@ -1,7 +1,7 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols;
 
 public enum TicTacToeSymbol implements Symbols {
-    DEFAULT(" "),
+    EMPTY(" "),
     X("X"),
     O("O");
 
