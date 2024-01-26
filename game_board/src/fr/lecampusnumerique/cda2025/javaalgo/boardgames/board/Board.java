@@ -1,16 +1,15 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.board;
 
-public abstract class Board implements Boards {
-    private int amountOfColumns;
-    private int amountOfRows;
-    private boolean isFull;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.cell.AbstractCell;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.cell.Cell;
 
-
-    protected int getAmountOfColumns(int amountOfColumns){return this.amountOfColumns = amountOfColumns;};
-    protected int getAmountOfRows(int amountOfRows){return this.amountOfRows = amountOfRows;};
-    protected boolean setIsFull(boolean isFull){ return this.isFull = isFull;};
-//    void clean(){};
-//    String[] getRow(int row){};
-//    String[] getColumn(int row){};
+public interface Board {
+    // Ne contient que des méthodes dont on a besoin pour utiliser un board
+    int getAmountOfColumns();
+    int getAmountOfRows();
+    void buildBoard();
+    boolean isFull();
+    void clean();
+    AbstractCell[] getRow(int row);
+    AbstractCell[]getColumn(int col);
 }
-
