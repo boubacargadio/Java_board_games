@@ -1,5 +1,7 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.board;
 
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.EmptySymbol;
+
 public class Board {
 
     // *******
@@ -86,6 +88,19 @@ public class Board {
         }
     }
 
+    protected boolean isBoardFull(){
+        boolean isFull = true;
+       for (Cell[] row : board) {
+           for (Cell cell: row) {
+               if (cell.getSymbol() == EmptySymbol.EMPTY){
+                   isFull = false;
+               }
+           }
+       }
+        setIsFull(isFull);
+       return isFull;
+    }
+
     public Cell[] getRow(int row) {
         return board[row];
     }
@@ -100,5 +115,6 @@ public class Board {
     }
 
     public void clean() {
+        createBoard();
     }
 }
