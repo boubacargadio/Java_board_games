@@ -17,6 +17,10 @@ public class AbstractCell implements Cell {
         this.symbol = symbol;
     }
 
+    // *******
+    // ************* OTHER METHODS
+    // *******
+
     public boolean isValueCompatible() {
         return false;
     }
