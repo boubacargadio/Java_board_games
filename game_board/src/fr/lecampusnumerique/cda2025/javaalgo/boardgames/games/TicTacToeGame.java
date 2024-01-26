@@ -1,6 +1,6 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
 
-public class TicTacToe {
+public class TicTacToeGame extends AbstractGame {
     int getAmountOfColumns() {
         return 0;
     }
