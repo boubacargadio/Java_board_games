@@ -1,11 +1,9 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.board;
 
-public class Connect4Board {
-//    int getAmountOfColumns();
-//    int getAmountOfRows();
-//    boolean isFull();
-//    void clean();
-//    String[] getRow(int row);
-//    String[] getColumn(int row);
+public class Connect4Board extends AbstractBoard {
 
+
+    public Connect4Board() {
+        super(6, 7);
+    }
 }
