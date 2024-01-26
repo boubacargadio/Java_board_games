@@ -1,8 +1,8 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols;
 
 public enum GomokuSymbol implements Symbols {
-    X("N"),
-    O("B");
+    N("N"),
+    B("B");
 
     private String representation;
 
