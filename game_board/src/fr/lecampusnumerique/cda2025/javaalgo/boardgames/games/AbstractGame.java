@@ -1,8 +1,19 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
 
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.players.Player;
+
 public abstract class AbstractGame implements Game {
-    public boolean isOver() {
-        return false;
+    private Player[] playerList;
+    private boolean isOver;
+
+
+
+    protected boolean getIsOver() {
+        return this.isOver;
+    }
+
+    protected void setIsOver(boolean isOver) {
+        this.isOver = isOver;
     }
 
 
