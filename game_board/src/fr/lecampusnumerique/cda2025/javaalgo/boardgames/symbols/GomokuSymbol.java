@@ -1,7 +1,6 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols;
 
 public enum GomokuSymbol implements Symbols {
-    EMPTY(" "),
     X("N"),
     O("B");
 
