@@ -1,6 +1,6 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols;
 
-public enum EmptySymbol implements Symbols {
+public enum EmptySymbol implements Symbol {
     EMPTY(" ");
 
     private String representation;

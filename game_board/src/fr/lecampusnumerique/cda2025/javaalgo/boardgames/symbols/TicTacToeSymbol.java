@@ -1,6 +1,6 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols;
 
-public enum TicTacToeSymbol implements Symbols {
+public enum TicTacToeSymbol implements Symbol {
     X("X"),
     O("O");
 

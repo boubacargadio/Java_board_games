@@ -1,5 +1,5 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols;
 
-public interface Symbols {
+public interface Symbol {
     String getRepresentation();
 }

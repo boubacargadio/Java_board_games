@@ -1,17 +1,17 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.players;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbols;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbol;
 
 import java.util.Scanner;
 
 public abstract class AbstractPlayer implements Player {
     private int number;
-    private Symbols symbol;
+    private Symbol symbol;
     private boolean isArtificial;
 
     Scanner scanner = new Scanner(System.in);
 
-    public AbstractPlayer(int number, Symbols symbol, boolean isArtificial) {
+    public AbstractPlayer(int number, Symbol symbol, boolean isArtificial) {
         this.number = number;
         this.symbol = symbol;
         this.isArtificial = isArtificial;
@@ -31,11 +31,11 @@ public abstract class AbstractPlayer implements Player {
         this.number = number;
     }
 
-    public Symbols getSymbol() {
+    public Symbol getSymbol() {
         return this.symbol;
     }
 
-    public void setSymbol(Symbols symbol) {
+    public void setSymbol(Symbol symbol) {
         this.symbol = symbol;
     }
 

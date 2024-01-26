@@ -1,14 +1,14 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.players;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbols;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbol;
 
 public interface Player {
 
     void setNumber(int number);
 
-    Symbols getSymbol();
+    Symbol getSymbol();
 
-    void setSymbol(Symbols symbol);
+    void setSymbol(Symbol symbol);
 
     boolean isArtificial();
 

@@ -1,6 +1,6 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols;
 
-public enum GomokuSymbol implements Symbols {
+public enum GomokuSymbol implements Symbol {
     N("N"),
     B("B");
 

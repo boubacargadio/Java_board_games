@@ -1,19 +1,19 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.board;
 
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.EmptySymbol;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbols;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbol;
 
 public class Cell {
-    private Symbols symbol;
+    private Symbol symbol;
     protected Cell() {
         this.symbol = EmptySymbol.EMPTY;
     }
 
-    public Symbols getSymbol() {
+    public Symbol getSymbol() {
         return symbol;
     }
 
-    public void setSymbol(Symbols symbol) {
+    public void setSymbol(Symbol symbol) {
         this.symbol = symbol;
     }
 
