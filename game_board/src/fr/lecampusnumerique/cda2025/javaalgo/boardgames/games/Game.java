@@ -4,7 +4,7 @@ public interface Game {
     //Players[] getPlayers[];
     boolean isOver();
 
-    void play();
+    void play(Games game);
     void stop();
     void restart();
     void playRound();

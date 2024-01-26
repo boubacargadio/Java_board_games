@@ -6,25 +6,21 @@ public abstract class AbstractGame implements Game {
     }
 
 
-    public void play() {
-
+    public void play(Games game) {
+        System.out.println(" We are playing " + game.getName());
     }
-
 
     public void stop() {
 
     }
 
-
     public void restart() {
 
     }
 
-
     public void playRound() {
 
     }
-
 
     public void PlayTurns() {
 
