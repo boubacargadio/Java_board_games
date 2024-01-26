@@ -1,7 +1,5 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.board;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbols;
-
 public class Board {
 
     // *******
@@ -10,7 +8,6 @@ public class Board {
 
     private final int amountOfRows;
     private final int amountOfColumns;
-    private final Symbols[] symbols;
     private final Cell[][] board;
     private boolean isFull;
 
@@ -34,12 +31,12 @@ public class Board {
     // ************* CONSTRUCTOR
     // *******
 
-    public Board(Symbols[] symbols, int amountOfRows, int amountOfColumns) {
+    public Board(int amountOfRows, int amountOfColumns) {
         this.amountOfColumns = amountOfColumns;
         this.amountOfRows = amountOfRows;
-        this.symbols = symbols;
         this.board = new Cell[amountOfRows][amountOfColumns];
         createBoard();
+        displayBoard();
     }
 
     // *******
@@ -52,10 +49,6 @@ public class Board {
 
     public int getAmountOfColumns() {
         return amountOfColumns;
-    }
-
-    public Symbols[] getSymbols() {
-        return symbols;
     }
 
     public Cell[][] getBoard() {
@@ -76,9 +69,21 @@ public class Board {
     // ************* METHODS
     // *******
 
-    public void buildBoard() {
-        System.out.println(" build board with " + amountOfColumns + " col");
-        System.out.println(" build board with " + amountOfRows + " rows");
+    public void displayBoard() {
+        String endRow = "|";
+        StringBuilder horizontalBorder = new StringBuilder();
+        horizontalBorder.append(" -----".repeat(amountOfColumns));
+
+        System.out.println(horizontalBorder);
+
+        for (Cell[] row : board) {
+            for (Cell cell : row) {
+                System.out.printf("|  " + cell.getSymbol().getRepresentation() + "  ");
+            }
+            System.out.printf(endRow);
+            System.out.println();
+            System.out.println(horizontalBorder);
+        }
     }
 
     public Cell[] getRow(int row) {
@@ -86,7 +91,12 @@ public class Board {
     }
 
     public Cell[] getColumn(int col) {
-        return board[col];
+        Cell[] column = new Cell[amountOfRows];
+        for (int i = 0; i < board.length ; i++) {
+            column[i] = board[i][col];
+        }
+
+        return column;
     }
 
     public void clean() {
