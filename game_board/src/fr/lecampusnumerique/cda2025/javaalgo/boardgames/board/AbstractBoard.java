@@ -8,20 +8,19 @@ public abstract class AbstractBoard implements Board {
     // ************* ATTRIBUTES
     // *******
 
-    private int amountOfRows;
-    private int amountOfColumns;
-    private AbstractCell[][] board = new AbstractCell[amountOfRows][amountOfColumns];
+    private final int amountOfRows;
+    private final int amountOfColumns;
+    private final AbstractCell[][] board;
     private boolean isFull;
 
     // *******
     // ************* CONSTRUCTOR
     // *******
 
-    public AbstractBoard() {
+    public AbstractBoard(int amountOfRows, int amountOfColumns) {
         this.amountOfColumns = amountOfColumns;
         this.amountOfRows = amountOfRows;
-        this.isFull = isFull;
-        this.board = board;
+        this.board = new AbstractCell[amountOfRows][amountOfColumns];
     }
 
     // *******
@@ -32,24 +31,12 @@ public abstract class AbstractBoard implements Board {
         return amountOfRows;
     }
 
-    public void setAmountOfRows(int amountOfRows) {
-        this.amountOfRows = amountOfRows;
-    }
-
     public int getAmountOfColumns() {
         return amountOfColumns;
     }
 
-    public void setAmountOfColumns(int amountOfColumns) {
-        this.amountOfColumns = amountOfColumns;
-    }
-
     public AbstractCell[][] getBoard() {
         return board;
-    }
-
-    public void setBoard(AbstractCell[][] board) {
-        this.board = board;
     }
 
     public boolean isFull() {
