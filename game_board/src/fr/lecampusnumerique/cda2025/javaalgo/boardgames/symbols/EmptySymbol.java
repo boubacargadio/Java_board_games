@@ -1,16 +1,13 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols;
 
-public enum TicTacToeSymbol implements Symbols {
-    X("X"),
-    O("O");
+public enum EmptySymbol implements Symbols {
+    EMPTY(" ");
 
     private String representation;
 
-
-    @Override
     public String getRepresentation() {
         return representation;
     }
 
-    TicTacToeSymbol(String representation) { this.representation = representation;}
+  EmptySymbol(String representation) { this.representation = representation;}
 }
