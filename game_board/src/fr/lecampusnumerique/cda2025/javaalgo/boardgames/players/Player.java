@@ -17,5 +17,5 @@ public interface Player {
     String getRepresentation();
 
     int[] getPlayerMove();
-    void PlayerTurn();
+    void playerTurn();
 }
