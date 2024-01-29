@@ -5,19 +5,7 @@ import java.util.Scanner;
 
 public class PlayerTurn  {
 
-    private Player player1;
-    private Player player2;
-    int sizeGame;
-    private Cell[] board = new Cell[sizeGame];
-    private int getPosition;
-    public PlayerTurn(Player player1, Player player2){
-        this.player1 = player1;
-        this.player2 = player2;
-    }
 
-    public PlayerTurn() {
-
-    }
 
     public void play(){
 
@@ -40,8 +28,6 @@ public class PlayerTurn  {
     private void getMovePlayer(Player current) {
 
     }
-
-
     public Player switchPlayer() {
         Player currentPlayer = null;
         System.out.println("Turn of player: ");
