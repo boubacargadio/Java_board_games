@@ -9,5 +9,4 @@ public interface Game {
     void restart();
     void playRound();
     void PlayTurns();
-
 }
