@@ -42,23 +42,22 @@ public abstract class AbstractGame implements Game {
         System.out.println("Game over or victory");
     }
 
-    public void stop() {
+    public void stop() {    }
 
-    }
-
-    public void restart() {
-
-    }
+    public void restart() {    }
 
 
     public void playerTurn(Player player) {
         int[] move = player.getPlayerMove();
+
+
 
         // Check if move is correct --> with the move; check if the cell in board is empty
         // move [4, 2] --> check if board[2][4] is empty / available
         // if error --> getPlayerMove again
         // if good --> setOwner of cell to belong to player && check for victory
     }
+
 
     public Player switchPlayer(Player currentPlayer) {
         if (currentPlayer == player1) {

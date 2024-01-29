@@ -81,11 +81,6 @@ public abstract class AbstractPlayer implements Player {
                 playerMove[0] = getColumnMove();
                 playerMove[1] = getRowMove();
 
-            //            if (getPosition <= 0 && getPosition > sizeGame) {
-            //                System.out.println("Position: " + getPosition);
-            //                break;
-            //            }
-
         return playerMove;
     }
     public void playerTurn(){}
