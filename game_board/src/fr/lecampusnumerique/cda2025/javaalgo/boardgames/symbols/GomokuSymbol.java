@@ -1,8 +1,8 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols;
 
-public enum TicTacToeSymbol implements Symbols {
-    X("X"),
-    O("O");
+public enum GomokuSymbol implements Symbols {
+    N("N"),
+    B("B");
 
     private String representation;
 
@@ -12,5 +12,7 @@ public enum TicTacToeSymbol implements Symbols {
         return representation;
     }
 
-    TicTacToeSymbol(String representation) { this.representation = representation;}
+    GomokuSymbol(String representation) {
+        this.representation = representation;
+    }
 }

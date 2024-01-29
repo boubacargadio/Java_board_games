@@ -1,9 +1,9 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols;
 
 public enum Connect4Symbol implements Symbols {
-    EMPTY(""),
-    RED("R"),
-    YELLOW("Y");
+    EMPTY(" "),
+    R("R"),
+    Y("Y");
 
     private String representation;
     @Override
