@@ -35,10 +35,11 @@ public abstract class AbstractGame implements Game {
         player2 = new TicTacToePlayer(2, TicTacToeSymbol.O, false);
 
         Player currentPlayer = player1;
-
-        while (!board.isFull()) {
+        while (!board.isFull() && !victoryChecker.getIsVictory()) {
+            playerTurn(currentPlayer);
             currentPlayer = switchPlayer(currentPlayer);
         }
+        System.out.println("Game over or victory");
     }
 
     public void stop() {
@@ -49,12 +50,14 @@ public abstract class AbstractGame implements Game {
 
     }
 
-    public void playerTurns() {
 
-    }
+    public void playerTurn(Player player) {
+        int[] move = player.getPlayerMove();
 
-    public void playTurns() {
-
+        // Check if move is correct --> with the move; check if the cell in board is empty
+        // move [4, 2] --> check if board[2][4] is empty / available
+        // if error --> getPlayerMove again
+        // if good --> setOwner of cell to belong to player && check for victory
     }
 
     public Player switchPlayer(Player currentPlayer) {

@@ -6,7 +6,6 @@ public interface Game {
     void play(Games game);
     void stop();
     void restart();
-    void playerTurns();
-    void playTurns();
+    void playerTurn();
     boolean isOver();
 }
