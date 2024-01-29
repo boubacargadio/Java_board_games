@@ -1,11 +1,9 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.PlayerTurns;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.players;
 
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.cell.Cell;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.players.Player;
-
 import java.util.Scanner;
 
-public class PlayerTurn implements PlayerTurns{
+public class PlayerTurn  {
 
     private Player player1;
     private Player player2;
@@ -43,7 +41,7 @@ public class PlayerTurn implements PlayerTurns{
 
     }
 
-    @Override
+
     public Player switchPlayer() {
         Player currentPlayer = null;
         System.out.println("Turn of player: ");
@@ -67,7 +65,7 @@ public class PlayerTurn implements PlayerTurns{
         return false;
     }
 
-    @Override
+
     public boolean checkMove() {
         for (Cell cell : board){
             if (!(cell.getRepresentation().equals(player1.getRepresentation())
@@ -96,12 +94,5 @@ public class PlayerTurn implements PlayerTurns{
 
             }while (true);
         return scanner;
-    }
-
-    @Override
-    public boolean boardIsFull() {
-
-        System.out.println("Game over! tie");
-        return true;
     }
 }
