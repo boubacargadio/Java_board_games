@@ -1,16 +1,15 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.Connect4Game;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.Games;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.Connect4Game;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.GomokuGame;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.TicTacToeGame;
-
-import java.util.Scanner;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
 
 public class BoardGames {
     private Games selectedGame;
-    private final Games[] availableGames = new Games[]{Games.TICTACTOE, Games.CONNECT4, Games.GOMOKU};
-    private final Scanner scanner = new Scanner(System.in);
+
+    UserInteraction userInteraction = new UserInteraction();
 
     public BoardGames() {
     }
@@ -32,13 +31,7 @@ public class BoardGames {
         return Games.TICTACTOE;
     }
     public void selectGame() {
-        BoardGames boardGames = new BoardGames();
-        System.out.println("Welcome to our boardgames platform. Which game do you want to play?");
-        for (int i = 0; i < availableGames.length ; i++) {
-            System.out.println("Press " + availableGames[i].ordinal() + " to play " + availableGames[i].getName());
-        }
-
-        int playerSelection = Integer.parseInt(scanner.nextLine());
+        int playerSelection = userInteraction.getGameChoice();
         setSelectedGame(findGame(playerSelection));
 
         System.out.println("Perfect! Let's play " + getSelectedGame().getName());
