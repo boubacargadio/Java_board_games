@@ -1,13 +1,15 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.players;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.Game;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.Games;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbols;
+
+import java.util.Scanner;
 
 public abstract class AbstractPlayer implements Player {
     private int number;
     private Symbols symbol;
     private boolean isArtificial;
+
+    Scanner scanner = new Scanner(System.in);
 
     public AbstractPlayer(int number, Symbols symbol, boolean isArtificial) {
         this.number = number;
@@ -49,7 +51,37 @@ public abstract class AbstractPlayer implements Player {
         return getSymbol().getRepresentation();
     }
 
-    public int[] getPlayerMove(int[] move) {
-        return move;
+    private int getColumnMove() {
+        do {
+            System.out.println("Entrez une colonne :");
+            try {
+                return Integer.parseInt(scanner.next());
+            } catch (Exception e) {
+                System.out.println("Entry a number!");
+                continue;
+            }
+        } while (true);
     }
+
+    private int getRowMove() {
+        do {
+            System.out.println("Choisissez une ligne :");
+            try {
+                return Integer.parseInt(scanner.next());
+            } catch (Exception e) {
+                System.out.println("Entry a number!");
+                continue;
+            }
+        } while (true);
+    }
+
+
+    public int[] getPlayerMove() {
+        int[] playerMove = new int[]{};
+                playerMove[0] = getColumnMove();
+                playerMove[1] = getRowMove();
+
+        return playerMove;
+    }
+    public void playerTurn(){}
 }
