@@ -6,12 +6,16 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.players.TicTacToePlayer;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.TicTacToeSymbol;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.victoryChecker.VictoryChecker;
 
+import java.util.Scanner;
+
 public abstract class AbstractGame implements Game {
     private Player player1;
     private Player player2;
 
     private final Board board;
     private boolean isOver;
+
+    Scanner scanner = new Scanner(System.in);
 
     VictoryChecker victoryChecker = new VictoryChecker(0);
 
@@ -31,8 +35,7 @@ public abstract class AbstractGame implements Game {
 
     public void play(Games game) {
         System.out.println(" We are playing " + game.getName());
-        player1 = new TicTacToePlayer(1, TicTacToeSymbol.X, false);
-        player2 = new TicTacToePlayer(2, TicTacToeSymbol.O, false);
+        definePlayers();
 
         Player currentPlayer = player1;
         while (!board.isFull() && !victoryChecker.getIsVictory()) {
@@ -41,6 +44,23 @@ public abstract class AbstractGame implements Game {
             board.displayBoard();
         }
         System.out.println("Game over or victory");
+    }
+
+    private void buildPlayers(int players){
+        boolean isPlayer1Artificial = players == 0;
+        boolean isPlayer2Artificial = players == 0 || players == 1;
+
+        player1 = new TicTacToePlayer(1, TicTacToeSymbol.X, isPlayer1Artificial);
+        player2 = new TicTacToePlayer(2, TicTacToeSymbol.O, isPlayer2Artificial);
+    }
+
+    private void definePlayers(){
+        int howManyPlayers;
+        System.out.println("How many players want to play? ");
+        System.out.println("Press 2 for 2 players |  1 to play against computer |  or 0 to watch the computer playing!");
+        howManyPlayers = Integer.parseInt(scanner.next());
+
+        buildPlayers(howManyPlayers);
     }
 
     public void stop() {    }
