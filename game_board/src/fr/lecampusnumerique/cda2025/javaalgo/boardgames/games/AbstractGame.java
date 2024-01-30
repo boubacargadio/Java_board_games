@@ -38,6 +38,7 @@ public abstract class AbstractGame implements Game {
         while (!board.isFull() && !victoryChecker.getIsVictory()) {
             playerTurn(currentPlayer);
             currentPlayer = switchPlayer(currentPlayer);
+            board.displayBoard();
         }
         System.out.println("Game over or victory");
     }
@@ -48,8 +49,8 @@ public abstract class AbstractGame implements Game {
 
 
     public void playerTurn(Player player) {
-        int[] move = player.getPlayerMove();
         System.out.println("Player turn, playing move " + player.getRepresentation());
+        int[] move = player.getPlayerMove();
 
 
 
