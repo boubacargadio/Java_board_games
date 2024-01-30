@@ -49,6 +49,7 @@ public abstract class AbstractGame implements Game {
 
     public void playerTurn(Player player) {
         int[] move = player.getPlayerMove();
+        System.out.println("Player turn, playing move " + player.getRepresentation());
 
 
 

@@ -52,36 +52,52 @@ public abstract class AbstractPlayer implements Player {
     }
 
     private int getColumnMove() {
+        boolean running = true;
+        int answer = 0;
         do {
             System.out.println("Entrez une colonne :");
             try {
-                return Integer.parseInt(scanner.next());
+                answer = Integer.parseInt(scanner.next());
+                System.out.println("colonne is: " + answer);
+                running = false;
             } catch (Exception e) {
                 System.out.println("Entry a number!");
                 continue;
             }
-        } while (true);
+        } while (running);
+        return answer;
     }
 
     private int getRowMove() {
+        boolean running = true;
+        int answer = 0;
         do {
             System.out.println("Choisissez une ligne :");
             try {
-                return Integer.parseInt(scanner.next());
+                answer = Integer.parseInt(scanner.next());
+                System.out.println("row is: " + answer);
+                running = false;
             } catch (Exception e) {
                 System.out.println("Entry a number!");
                 continue;
             }
-        } while (true);
+        } while (running);
+        return answer;
     }
 
 
     public int[] getPlayerMove() {
-        int[] playerMove = new int[]{};
-                playerMove[0] = getColumnMove();
-                playerMove[1] = getRowMove();
+        int[] playerMove = new int[2];
+
+        System.out.println("Get player row");
+        playerMove[0] = getRowMove()-1;
+
+        System.out.println("Get player col");
+        playerMove[1] = getColumnMove()-1;
 
         return playerMove;
     }
-    public void playerTurn(){}
+
+    public void playerTurn() {
+    }
 }

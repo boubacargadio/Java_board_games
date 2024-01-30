@@ -9,7 +9,7 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
 public class BoardGames {
     private Games selectedGame;
 
-    UserInteraction userInteraction = new UserInteraction();
+    private UserInteraction userInteraction = new UserInteraction();
 
     public BoardGames() {
     }
@@ -22,7 +22,7 @@ public class BoardGames {
         this.selectedGame = selectedGame;
     }
 
-    public Games findGame(int number){
+    private Games findGame(int number){
         for(Games game : Games.values()){
             if(game.ordinal() == number) {
                 return game;
