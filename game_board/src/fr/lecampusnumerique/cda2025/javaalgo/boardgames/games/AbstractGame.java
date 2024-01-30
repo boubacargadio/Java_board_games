@@ -3,6 +3,7 @@ package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.board.Board;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.players.Player;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.players.TicTacToePlayer;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbol;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.TicTacToeSymbol;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.victoryChecker.VictoryChecker;
 
@@ -11,6 +12,7 @@ import java.util.Scanner;
 public abstract class AbstractGame implements Game {
     private Player player1;
     private Player player2;
+    private Symbol[] symbols;
 
     private final Board board;
     private boolean isOver;
@@ -19,9 +21,19 @@ public abstract class AbstractGame implements Game {
 
     VictoryChecker victoryChecker = new VictoryChecker(0);
 
+    abstract void defineSymbols();
 
     public AbstractGame(int amountOfRows, int amountOfColumns) {
         this.board = new Board(amountOfRows, amountOfColumns);
+        defineSymbols();
+    }
+
+    public Symbol[] getSymbols() {
+        return symbols;
+    }
+
+    public void setSymbols(Symbol[] symbols) {
+        this.symbols = symbols;
     }
 
     protected boolean getIsOver() {
