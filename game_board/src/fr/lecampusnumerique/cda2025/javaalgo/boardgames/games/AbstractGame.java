@@ -2,9 +2,7 @@ package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
 
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.board.Board;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.players.Player;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.players.TicTacToePlayer;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbol;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.TicTacToeSymbol;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.victoryChecker.VictoryChecker;
 
 import java.util.Scanner;
@@ -62,8 +60,8 @@ public abstract class AbstractGame implements Game {
         boolean isPlayer1Artificial = players == 0;
         boolean isPlayer2Artificial = players == 0 || players == 1;
 
-        player1 = new TicTacToePlayer(1, TicTacToeSymbol.X, isPlayer1Artificial);
-        player2 = new TicTacToePlayer(2, TicTacToeSymbol.O, isPlayer2Artificial);
+        player1 = new Player(1, symbols[0], isPlayer1Artificial);
+        player2 = new Player(2, symbols[1], isPlayer2Artificial);
     }
 
     private void definePlayers(){
