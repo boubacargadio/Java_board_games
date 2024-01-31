@@ -38,22 +38,23 @@ public class BoardGames {
     }
 
     private void launchGame() {
-
-        switch(selectedGame) {
-            case Games.TICTACTOE:
-                TicTacToeGame ticTacToeGame = new TicTacToeGame();
-                ticTacToeGame.play(selectedGame);
-                break;
-            case Games.GOMOKU:
-                GomokuGame gomokuGame = new GomokuGame();
-                gomokuGame.play(selectedGame);
-                break;
-            case Games.CONNECT4:
-                Connect4Game connect4Game = new Connect4Game();
-                connect4Game.play(selectedGame);
-                break;
-            default:
-                System.out.println("invalid selection");
-        }
+        this.currentGame = GameFactory.createGame(selectedGame);
+        this.currentGame.play();
+//        switch(selectedGame) {
+//            case Games.TICTACTOE:
+//                this.currentGame = new TicTacToeGame();
+//                this.currentGame.play();
+//                break;
+//            case Games.GOMOKU:
+//                GomokuGame gomokuGame = new GomokuGame();
+//                gomokuGame.play();
+//                break;
+//            case Games.CONNECT4:
+//                Connect4Game connect4Game = new Connect4Game();
+//                connect4Game.play();
+//                break;
+//            default:
+//                System.out.println("invalid selection");
+//        }
     }
 }
