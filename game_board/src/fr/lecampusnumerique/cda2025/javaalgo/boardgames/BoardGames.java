@@ -4,28 +4,28 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.*;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
 
 public class BoardGames {
-    private GameName selectedGame;
+    private GameIdentity selectedGame;
 
     private final UserInteraction userInteraction = new UserInteraction();
 
     public BoardGames() {
     }
 
-    public GameName getSelectedGame() {
+    public GameIdentity getSelectedGame() {
         return selectedGame;
     }
 
-    private void setSelectedGame(GameName selectedGame) {
+    private void setSelectedGame(GameIdentity selectedGame) {
         this.selectedGame = selectedGame;
     }
 
-    private GameName findGame(int number){
-        for(GameName game : GameName.values()){
+    private GameIdentity findGame(int number){
+        for(GameIdentity game : GameIdentity.values()){
             if(game.ordinal() == number) {
                 return game;
             }
         }
-        return GameName.TICTACTOE;
+        return GameIdentity.TICTACTOE;
     }
 
     public void selectGame() {

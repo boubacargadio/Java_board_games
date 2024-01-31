@@ -8,22 +8,21 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.victoryChecker.VictoryCh
 import java.util.Scanner;
 
 public abstract class AbstractGame implements Game {
+    private GameIdentity gameIdentity;
     private Player player1;
     private Player player2;
     private Symbol[] symbols;
-
     private final Board board;
     private boolean isOver;
 
     private Scanner scanner = new Scanner(System.in);
 
     private VictoryChecker victoryChecker = new VictoryChecker(0);
-    private GameName gameType;
 
     abstract void defineSymbols();
 
-    public AbstractGame(GameName type, int amountOfRows, int amountOfColumns) {
-        this.gameType = type;
+    public AbstractGame(GameIdentity gameIdentity, int amountOfRows, int amountOfColumns) {
+        this.gameIdentity = gameIdentity;
         this.board = new Board(amountOfRows, amountOfColumns);
         defineSymbols();
     }
@@ -46,7 +45,7 @@ public abstract class AbstractGame implements Game {
 
 
     public void play() {
-        System.out.println(" We are playing " + this.gameType.getName());
+        System.out.println(" We are playing " + this.gameIdentity.getName());
         definePlayers();
 
         Player currentPlayer = player1;

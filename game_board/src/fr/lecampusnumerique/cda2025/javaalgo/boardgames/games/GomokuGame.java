@@ -2,11 +2,10 @@ package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
 
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.GomokuSymbol;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbol;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.TicTacToeSymbol;
 
 public class GomokuGame extends AbstractGame {
     public GomokuGame() {
-        super(GameName.GOMOKU, 15, 15);
+        super(GameIdentity.GOMOKU, 15, 15);
     }
 
     @Override
