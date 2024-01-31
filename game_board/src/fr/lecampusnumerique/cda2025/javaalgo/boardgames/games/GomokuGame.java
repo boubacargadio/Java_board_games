@@ -6,7 +6,7 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.TicTacToeSymbol;
 
 public class GomokuGame extends AbstractGame {
     public GomokuGame() {
-        super(15, 15);
+        super(GameName.GOMOKU, 15, 15);
     }
 
     @Override

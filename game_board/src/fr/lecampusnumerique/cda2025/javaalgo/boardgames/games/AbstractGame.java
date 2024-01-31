@@ -45,8 +45,8 @@ public abstract class AbstractGame implements Game {
     }
 
 
-    public void play(Games game) {
-        System.out.println(" We are playing " + game.getName());
+    public void play() {
+        System.out.println(" We are playing " + this.gameType.getName());
         definePlayers();
 
         Player currentPlayer = player1;
