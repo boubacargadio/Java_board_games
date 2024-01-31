@@ -15,13 +15,15 @@ public abstract class AbstractGame implements Game {
     private final Board board;
     private boolean isOver;
 
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
-    VictoryChecker victoryChecker = new VictoryChecker(0);
+    private VictoryChecker victoryChecker = new VictoryChecker(0);
+    private GameName gameType;
 
     abstract void defineSymbols();
 
-    public AbstractGame(int amountOfRows, int amountOfColumns) {
+    public AbstractGame(GameName type, int amountOfRows, int amountOfColumns) {
+        this.gameType = type;
         this.board = new Board(amountOfRows, amountOfColumns);
         defineSymbols();
     }

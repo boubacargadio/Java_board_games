@@ -1,34 +1,32 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.Games;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.Connect4Game;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.GomokuGame;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.TicTacToeGame;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.*;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
 
 public class BoardGames {
-    private Games selectedGame;
+    private GameName selectedGame;
+    private Game currentGame;
 
     private UserInteraction userInteraction = new UserInteraction();
 
     public BoardGames() {
     }
 
-    public Games getSelectedGame() {
+    public GameName getSelectedGame() {
         return selectedGame;
     }
 
-    private void setSelectedGame(Games selectedGame) {
+    private void setSelectedGame(GameName selectedGame) {
         this.selectedGame = selectedGame;
     }
 
-    private Games findGame(int number){
-        for(Games game : Games.values()){
+    private GameName findGame(int number){
+        for(GameName game : GameName.values()){
             if(game.ordinal() == number) {
                 return game;
             }
         }
-        return Games.TICTACTOE;
+        return GameName.TICTACTOE;
     }
     public void selectGame() {
         int playerSelection = userInteraction.getGameChoice();

@@ -1,6 +1,6 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
 
-public enum Games {
+public enum GameName {
     TICTACTOE("Tic Tac Toe"),
     CONNECT4("Connect 4"),
     GOMOKU("Gomoku");
@@ -9,7 +9,7 @@ public enum Games {
 
     public String getName() { return name;}
 
-    Games(String name) {
+    GameName(String name) {
         this.name = name;
     }
 }
