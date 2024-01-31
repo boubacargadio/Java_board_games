@@ -1,15 +1,18 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
 
 public enum GameName {
-    TICTACTOE("Tic Tac Toe"),
-    CONNECT4("Connect 4"),
-    GOMOKU("Gomoku");
+    TICTACTOE("Tic Tac Toe", 3),
+    CONNECT4("Connect 4", 7),
+    GOMOKU("Gomoku", 15);
     
-    private String name;
+    private final String name;
+    private final int size;
 
     public String getName() { return name;}
+    public int getSize() { return size;}
 
-    GameName(String name) {
+    GameName(String name, int size) {
         this.name = name;
+        this.size = size;
     }
 }
