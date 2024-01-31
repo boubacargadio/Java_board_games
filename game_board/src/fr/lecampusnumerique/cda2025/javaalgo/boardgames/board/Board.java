@@ -13,7 +13,7 @@ public class Board {
     private final Cell[][] board;
     private boolean isFull;
 
-    private Cell[] getOneRow() {
+    private Cell[] createOneRow() {
         Cell[] row = new Cell[amountOfColumns];
 
         for (int i = 0; i < amountOfColumns; i++) {
@@ -24,7 +24,7 @@ public class Board {
 
     private void createBoard() {
         for (int i = 0; i < amountOfRows; i++) {
-            this.board[i] = getOneRow();
+            this.board[i] = createOneRow();
         }
     }
 

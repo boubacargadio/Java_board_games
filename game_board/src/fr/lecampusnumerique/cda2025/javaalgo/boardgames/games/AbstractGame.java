@@ -54,6 +54,7 @@ public abstract class AbstractGame implements Game {
             playerTurn(currentPlayer);
             currentPlayer = switchPlayer(currentPlayer);
             board.displayBoard();
+
         }
         System.out.println("Game over or victory");
     }
