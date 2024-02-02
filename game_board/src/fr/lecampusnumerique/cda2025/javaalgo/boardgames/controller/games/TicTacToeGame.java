@@ -1,7 +1,7 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbol;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.TicTacToeSymbol;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.Symbol;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.TicTacToeSymbol;
 
 public class TicTacToeGame extends AbstractGame {
 

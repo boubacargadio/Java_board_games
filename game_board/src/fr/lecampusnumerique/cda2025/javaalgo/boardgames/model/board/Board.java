@@ -1,6 +1,7 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.board;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.board;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.EmptySymbol;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.EmptySymbol;
 
 public class Board {
 

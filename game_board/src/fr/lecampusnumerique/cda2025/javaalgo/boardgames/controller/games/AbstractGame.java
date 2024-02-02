@@ -1,9 +1,9 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.board.Board;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.players.Player;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.Symbol;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.victoryChecker.VictoryChecker;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.board.Board;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.players.Player;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.Symbol;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.victoryChecker.VictoryChecker;
 
 import java.util.Scanner;
 

@@ -1,6 +1,7 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.*;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games.*;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.GameFactory;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
 
 public class BoardGames {

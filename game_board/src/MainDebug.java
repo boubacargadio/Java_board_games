@@ -1,4 +1,4 @@
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.BoardGames;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.BoardGames;
 
 public class MainDebug {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games;
 
 public interface Game {
     //Players[] getPlayers[];

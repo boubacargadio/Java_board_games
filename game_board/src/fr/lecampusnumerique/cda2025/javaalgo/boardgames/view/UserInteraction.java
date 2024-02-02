@@ -1,6 +1,6 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.view;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.games.GameIdentity;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games.GameIdentity;
 
 import java.util.Scanner;
 

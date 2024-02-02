@@ -1,4 +1,6 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.games;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model;
+
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games.*;
 
 public class GameFactory {
     public static Game createGame(GameIdentity gameIdentity) {

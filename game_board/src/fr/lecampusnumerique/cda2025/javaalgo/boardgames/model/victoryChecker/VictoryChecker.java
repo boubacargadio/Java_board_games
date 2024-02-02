@@ -1,7 +1,7 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.victoryChecker;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.victoryChecker;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.board.Cell;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols.EmptySymbol;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.EmptySymbol;
 
 public class VictoryChecker implements Victory {
     private boolean isVictory = false;
