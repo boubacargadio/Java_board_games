@@ -20,7 +20,6 @@ public class Player implements IPlayer {
         this.number = number;
         this.symbol = symbol;
         this.isArtificial = isArtificial;
-
     }
 
     // **
@@ -104,22 +103,37 @@ public class Player implements IPlayer {
         return playerMove;
     }
 
-    public boolean checkmove(Board board,Player player, int[] move){
+    private boolean isMoveInBoardSize(int row, int col){
 
-        System.out.println("invalid line or column");
-        String[][] Board = new String[0][1];
-        return(!Board[][].getRepresentation.equals(player.getRepresentation()));
+        if (row < 0 || row >= board.getAmountOfRows() || col < 0 || col >= board.getAmountOfColumns()) {
+            System.out.println("Invalid line or column");
 
+        }
+        return false;
     }
-
-    public void setOwner(Board board,Player player, int[] move){
-
+    public boolean checkmove(Board board, Player player,int[] move) {
         int row = move[0];
         int col = move[1];
 
-        String[][] Board = new String[0][1];
-        Board[row][col] = player.getRepresentation();
-        board.displayBoard();
+        boolean isMoveInBoardSize = isMoveInBoardSize(row, col);
+        boolean isAvailable = board.getBoard()[row][col].isAvailable();
+
+        return isAvailable && isMoveInBoardSize;
+    }
+
+    // Set the owner of a cell on the board
+    public void setOwner(Board board, Player player, int[] move) {
+        int row = move[0];
+        int col = move[1];
+
+
+        if (row >= 0 && row < board.getAmountOfRows() && col >= 0 && col < board.getAmountOfColumns()) {
+          //  board.getCell(row, col).getRepresentation();
+            board.displayBoard();
+
+        } else {
+            System.out.println("row or column already used");
+        }
     }
     public void playerTurn() {
     }
