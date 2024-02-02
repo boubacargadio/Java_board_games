@@ -26,6 +26,6 @@ public class Cell {
     }
 
     public boolean isAvailable() {
-        return false;
+        return symbol == EmptySymbol.EMPTY;
     }
 }
