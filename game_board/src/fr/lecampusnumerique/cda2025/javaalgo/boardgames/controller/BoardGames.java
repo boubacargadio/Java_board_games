@@ -32,9 +32,6 @@ public class BoardGames {
     public void selectGame() {
         int playerSelection = userInteraction.getGameChoice();
         setSelectedGame(findGame(playerSelection));
-
-        System.out.println("Perfect! Let's play " + getSelectedGame().getName());
-
         launchGame();
     }
 

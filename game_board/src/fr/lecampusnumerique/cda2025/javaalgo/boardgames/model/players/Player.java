@@ -1,6 +1,7 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.players;
 
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.Symbol;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
 
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ public class Player implements IPlayer {
     private int number;
     private Symbol symbol;
     private boolean isArtificial;
+    private final UserInteraction userInteraction = new UserInteraction();
 
     private void definePlayerSymbol(int playerNumber, Symbol result1, Symbol result2){
         this.symbol = (playerNumber == 1) ? result1 :result2;
@@ -55,47 +57,18 @@ public class Player implements IPlayer {
     }
 
     private int getColumnMove() {
-        boolean running = true;
-        int answer = 0;
-        do {
-            System.out.println("Entrez une colonne :");
-            try {
-                answer = Integer.parseInt(scanner.next());
-                System.out.println("colonne is: " + answer);
-                running = false;
-            } catch (Exception e) {
-                System.out.println("Entry a number!");
-                continue;
-            }
-        } while (running);
-        return answer;
+       return userInteraction.askPlayerForMove("column");
     }
 
     private int getRowMove() {
-        boolean running = true;
-        int answer = 0;
-        do {
-            System.out.println("Choisissez une ligne :");
-            try {
-                answer = Integer.parseInt(scanner.next());
-                System.out.println("row is: " + answer);
-                running = false;
-            } catch (Exception e) {
-                System.out.println("Entry a number!");
-                continue;
-            }
-        } while (running);
-        return answer;
+       return userInteraction.askPlayerForMove("row");
     }
 
 
     public int[] getPlayerMove() {
         int[] playerMove = new int[2];
 
-        System.out.println("Get player row");
         playerMove[0] = getRowMove()-1;
-
-        System.out.println("Get player col");
         playerMove[1] = getColumnMove()-1;
 
         return playerMove;
