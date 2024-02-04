@@ -4,20 +4,10 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.EmptySymbol;
 
 public class VictoryChecker implements Victory {
-    private boolean isVictory = false;
     private final int checkSize;
-
 
     public VictoryChecker(int checkSize) {
         this.checkSize = checkSize;
-    }
-
-    public boolean getIsVictory() {
-        return isVictory;
-    }
-
-    private void setIsVictory(boolean victory) {
-        isVictory = victory;
     }
 
     // *****

@@ -8,7 +8,8 @@ import java.util.Scanner;
 public class UserInteraction {
     private final Scanner scanner = new Scanner(System.in);
 
-    public int getGameChoice() {
+    public int
+    getGameChoice() {
         GameIdentity[] gamesList = GameIdentity.values();
 
         System.out.println("Welcome to our boardgames platform. Which game do you want to play?");

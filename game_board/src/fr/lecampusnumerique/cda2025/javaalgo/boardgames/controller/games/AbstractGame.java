@@ -49,7 +49,7 @@ public abstract class AbstractGame implements Game {
         definePlayers();
 
         Player currentPlayer = player1;
-        while (!board.isFull() && !victoryChecker.getIsVictory()) {
+        while (!board.isFull() && !victoryChecker.isVictory(board.getBoard())) {
             playerTurn(currentPlayer);
             currentPlayer = switchPlayer(currentPlayer);
             board.displayBoard();
@@ -80,10 +80,18 @@ public abstract class AbstractGame implements Game {
 
 
     public void playerTurn(Player player) {
-        System.out.println("Player turn, playing move " + player.getRepresentation());
-        int[] move = player.getPlayerMove();
+        boolean running = true;
+        while(running) {
+            System.out.println("Player turn, playing move " + player.getRepresentation());
+            int[] move = player.getPlayerMove();
 
-
+            if (board.getBoard()[move[0]][move[1]].isAvailable()) {
+                board.getBoard()[move[0]][move[1]].setSymbol(player.getSymbol());
+                running = false;
+            } else {
+                System.out.println("Case déjà remplie. Veuillez en choisir une autre.");
+            }
+        }
 
         // Check if move is correct --> with the move; check if the cell in board is empty
         // move [4, 2] --> check if board[2][4] is empty / available
