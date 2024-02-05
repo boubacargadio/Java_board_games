@@ -92,7 +92,7 @@ public abstract class AbstractGame implements IGame {
     public void restart() {
     }
 
-    protected void playerTurn(Player player) {
+    public void playerTurn(Player player) {
         boolean running = true;
         while (running) {
             view.displayNewTurn(player);

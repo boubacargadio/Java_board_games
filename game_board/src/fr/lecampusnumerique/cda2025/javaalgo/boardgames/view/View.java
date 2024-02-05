@@ -49,6 +49,10 @@ public class View {
         System.out.println("Cellule non disponible. Veuillez en choisir une autre.");
     }
 
+    public void displayColumnIsFull(){
+        System.out.println("This column is full, chose another one");
+    }
+
     public void displaySelectRow(){
         System.out.println("Select a row to target:");
     }
