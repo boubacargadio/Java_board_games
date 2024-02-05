@@ -3,6 +3,7 @@ package fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games.*;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.GameFactory;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.View;
 
 public class BoardGames {
     private GameIdentity selectedGame;
@@ -26,8 +27,12 @@ public class BoardGames {
     }
 
     public void selectGame() {
-        int playerSelection = userInteraction.getGameChoice();
-        setSelectedGame(findGame(playerSelection));
+        GameIdentity[] gamesList = GameIdentity.values();
+
+        View.displayChooseGame(gamesList);
+        int playerSelection = userInteraction.getIntChoice(1, gamesList.length);
+
+        setSelectedGame(findGame(playerSelection - 1));
         launchGame();
     }
 

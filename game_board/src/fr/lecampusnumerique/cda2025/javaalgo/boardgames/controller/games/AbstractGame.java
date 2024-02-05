@@ -8,8 +8,6 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.victoryChecker.Vic
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.View;
 
-import java.util.Scanner;
-
 public abstract class AbstractGame implements IGame {
     private final GameIdentity gameIdentity;
     private Player player1;
@@ -19,11 +17,7 @@ public abstract class AbstractGame implements IGame {
     private final Board board;
     private boolean isOver;
 
-    private final Scanner scanner = new Scanner(System.in);
-
     private final VictoryChecker victoryChecker;
-
-    private final View view = new View();
     private final UserInteraction userInteraction = new UserInteraction();
 
     public AbstractGame(GameIdentity gameIdentity, int amountOfRows, int amountOfColumns) {
@@ -85,7 +79,7 @@ public abstract class AbstractGame implements IGame {
 
     private void definePlayers() {
         int howManyPlayers;
-        view.displayChooseGame();
+        View.displayChooseHowManyPlayers();
         howManyPlayers = userInteraction.getIntChoice(0, 2);
 
         buildPlayers(howManyPlayers);
