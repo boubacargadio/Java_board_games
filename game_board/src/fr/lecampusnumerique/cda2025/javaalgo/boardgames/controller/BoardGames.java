@@ -12,10 +12,6 @@ public class BoardGames {
     public BoardGames() {
     }
 
-    public GameIdentity getSelectedGame() {
-        return selectedGame;
-    }
-
     private void setSelectedGame(GameIdentity selectedGame) {
         this.selectedGame = selectedGame;
     }
@@ -36,7 +32,7 @@ public class BoardGames {
     }
 
     private void launchGame() {
-        Game currentGame = GameFactory.createGame(selectedGame);
-        currentGame.play();
+        IGame game = GameFactory.createGame(selectedGame);
+        game.play();
     }
 }

@@ -3,15 +3,13 @@ package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games.*;
 
 public class GameFactory {
-    public static Game createGame(GameIdentity gameIdentity) {
-        return switch(gameIdentity) {
-            case TICTACTOE -> new TicTacToeGame();
-            case CONNECT4 -> new Connect4Game();
-            case GOMOKU -> new GomokuGame();
-        };
-    }
 
-    public static Game createGame(GameIdentity gameIdentity, int sizeGame) {
-        return null;
+    public static IGame createGame(GameIdentity gameIdentity) {
+        int size = gameIdentity.getSize();
+
+        return switch(gameIdentity) {
+            case TICTACTOE, GOMOKU -> new Game(gameIdentity, size, size);
+            case CONNECT4 -> new Game(gameIdentity, size-1, size);
+        };
     }
 }
