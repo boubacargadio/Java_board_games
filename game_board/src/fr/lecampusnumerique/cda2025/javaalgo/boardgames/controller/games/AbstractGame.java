@@ -49,7 +49,7 @@ public abstract class AbstractGame implements IGame {
 
 
     public void play() {
-        System.out.println(" We are playing " + this.gameIdentity.getName());
+        view.displayPlayGame(this.gameIdentity);
         definePlayers();
 
         Player currentPlayer = player1;
@@ -63,9 +63,9 @@ public abstract class AbstractGame implements IGame {
 
         if (victoryChecker.isVictory(board.getBoard())) {
             String winner = victoryChecker.getWinningSymbol();
-            System.out.println("Player " + winner + " won!");
+            view.displayWinner(winner);
         } else {
-            System.out.println("You both lost you're shit.");
+            view.displayGameTie();
         }
 
     }

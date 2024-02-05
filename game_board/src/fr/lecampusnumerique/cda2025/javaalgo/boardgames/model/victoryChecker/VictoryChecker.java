@@ -95,6 +95,11 @@ public class VictoryChecker implements Victory {
         return false;
     }
 
+    /**
+     * Check if the player won after his move
+     * @param board is the current board after player move
+     * @return if victory or not
+     */
     public boolean isVictory(Cell[][] board) {
         for (int a = 0; a < board.length; a++) {
             for (int b = 0; b < board.length; b++) { //for every cell

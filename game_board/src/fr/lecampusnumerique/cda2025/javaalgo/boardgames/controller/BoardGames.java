@@ -27,6 +27,9 @@ public class BoardGames {
         return GameIdentity.TICTACTOE;
     }
 
+    /**
+     *
+     */
     public void selectGame() {
         GameIdentity[] gamesList = GameIdentity.values();
 

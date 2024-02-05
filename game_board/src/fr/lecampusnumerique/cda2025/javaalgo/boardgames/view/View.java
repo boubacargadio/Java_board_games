@@ -36,6 +36,11 @@ public class View {
         }
     }
 
+    public void displayPlayGame(GameIdentity gameIdentity){
+        System.out.println(" We are playing " + gameIdentity.getName());
+
+    }
+
     public void displayNewTurn(Player player) {
         System.out.println("Player turn, playing move " + player.getRepresentation());
     }
@@ -49,6 +54,13 @@ public class View {
     }
     public void displaySelectCol(){
         System.out.println("Select a column to target:");
+    }
+
+    public void displayWinner(String winner) {
+        System.out.println("Player " + winner + " won!");
+    }
+    public void displayGameTie(){
+        System.out.println("You both lost you're shit.");
     }
 
 
