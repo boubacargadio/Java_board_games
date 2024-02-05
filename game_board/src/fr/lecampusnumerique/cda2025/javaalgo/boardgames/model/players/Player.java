@@ -1,6 +1,5 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.players;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.Symbol;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
 
@@ -85,6 +84,14 @@ public class Player implements IPlayer {
         return playerMove;
     }
 
+    public int getPlayerMoveForConnect4(int amountOfColumns) {
+        if (isArtificial) {
+            Random randomizer = new Random();
+            return randomizer.nextInt(amountOfColumns);
+        } else {
+            return getColumnMove() - 1;
+        }
+    }
     public int[] getPlayerMove() {
         int[] playerMove = new int[2];
         playerMove[0] = getRowMove() - 1;

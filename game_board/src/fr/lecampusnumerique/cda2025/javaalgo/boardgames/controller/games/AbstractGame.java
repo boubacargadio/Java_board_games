@@ -52,7 +52,11 @@ public abstract class AbstractGame implements Game {
 
         Player currentPlayer = player1;
         while (!board.isFull() && !victoryChecker.isVictory(board.getBoard())) {
-            playerTurn(currentPlayer);
+            if (gameIdentity == GameIdentity.CONNECT4) {
+                playConnect4Turn(currentPlayer);
+            } else {
+                playerTurn(currentPlayer);
+            }
             currentPlayer = switchPlayer(currentPlayer);
             board.displayBoard();
         }
@@ -89,11 +93,7 @@ public abstract class AbstractGame implements Game {
     public void restart() {
     }
 
-    private void realPlayerTurn() {
-
-    }
-
-    public void playerTurn(Player player) {
+    private void playerTurn(Player player) {
         boolean running = true;
         while (running) {
             System.out.println("Player turn, playing move " + player.getRepresentation());
@@ -117,8 +117,42 @@ public abstract class AbstractGame implements Game {
         }
     }
 
+    private int setOwnerConnect4(int col) {
+        Cell[][] board = this.board.getBoard();
 
-    public Player switchPlayer(Player currentPlayer) {
+        for (int row = board.length - 1; row >= 0; row--) {
+            Cell cell = board[row][col];
+            if (cell.isAvailable()) {
+                return row;
+            }
+        }
+        return -1;
+    }
+
+    private void playConnect4Turn(Player player) {
+        boolean running = true;
+        int[] move = new int[2];
+        int amountOfColumns = board.getAmountOfColumns();
+
+        while (running) {
+            System.out.println("Player turn, playing move " + player.getRepresentation());
+
+            int col = player.getPlayerMoveForConnect4(amountOfColumns);
+            int row = setOwnerConnect4(col);
+
+            if (row == -1) {
+                System.out.println("This column is full, chose another one");
+            } else {
+                move[0] = row;
+                move[1] = col;
+                running = false;
+            }
+        }
+        Cell cell = board.getBoard()[move[0]][move[1]];
+        cell.setSymbol(player.getSymbol());
+    }
+
+    private Player switchPlayer(Player currentPlayer) {
         if (currentPlayer == player1) {
             return player2;
         } else {
