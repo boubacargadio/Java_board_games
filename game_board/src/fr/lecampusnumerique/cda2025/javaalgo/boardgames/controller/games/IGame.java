@@ -1,6 +1,6 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games;
 
-public interface Game {
+public interface IGame {
     //Players[] getPlayers[];
 
     void play();

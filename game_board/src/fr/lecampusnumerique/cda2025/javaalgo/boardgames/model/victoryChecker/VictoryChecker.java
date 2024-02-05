@@ -6,28 +6,29 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.EmptySymbo
 import java.util.Objects;
 
 public class VictoryChecker implements Victory {
-    private int checkSize = 0;
+    private final int victorySize;
     private String winningSymbol;
+
+    public VictoryChecker(int victorySize) {
+        this.victorySize = victorySize;
+    }
 
     // *****
     // ************ METHODS
     // *****
 
-    public void setCheckSize(int size) {
-        checkSize = size;
-    }
-
-    public String getWinner() {
+    public String getWinningSymbol() {
         return winningSymbol;
     }
 
-    public void setWinner(String winningSymbol) {
+    public void setWinningSymbol(String winningSymbol) {
         this.winningSymbol = winningSymbol;
     }
 
-    private boolean isOver_util(boolean same, String currentSymbol) {
-        if (same && !Objects.equals(currentSymbol, EmptySymbol.EMPTY.getRepresentation())) {
-            setWinner(currentSymbol);
+    private boolean setIsVictory(boolean areSymbolsEqual, String currentSymbol) {
+        boolean isEmpty = Objects.equals(currentSymbol, EmptySymbol.EMPTY.getRepresentation());
+        if (areSymbolsEqual && !isEmpty) {
+            setWinningSymbol(currentSymbol);
             return true;
         }
         return false;
@@ -35,61 +36,61 @@ public class VictoryChecker implements Victory {
 
     private boolean lineCheck(int a, int b, Cell[][] board) {
         boolean areSymbolsEqual = true;
-        String curStr = board[a][b].getSymbol().getRepresentation();
-        if (b + checkSize <= board[a].length) {
-            for (int c = 0; c < checkSize; c++) {
-                if (!Objects.equals(board[a][b + c].getSymbol().getRepresentation(), curStr)) {
+        String currentSymbol = board[a][b].getSymbol().getRepresentation();
+        if (b + victorySize <= board[a].length) {
+            for (int c = 0; c < victorySize; c++) {
+                if (!Objects.equals(board[a][b + c].getSymbol().getRepresentation(), currentSymbol)) {
                     areSymbolsEqual = false;
                 }
             }
-            return isOver_util(areSymbolsEqual, curStr);
+            return setIsVictory(areSymbolsEqual, currentSymbol);
         }
         return false;
     }
 
     private boolean columnCheck(int a, int b, Cell[][] board) {
         boolean areSymbolsEqual = true;
-        String curStr = board[a][b].getSymbol().getRepresentation();
-        if (a + checkSize <= board.length) {
-            for (int c = 0; c < checkSize; c++) {
-                if (!Objects.equals(board[a + c][b].getSymbol().getRepresentation(), curStr)) {
+        String currentSymbol = board[a][b].getSymbol().getRepresentation();
+        if (a + victorySize <= board.length) {
+            for (int c = 0; c < victorySize; c++) {
+                if (!Objects.equals(board[a + c][b].getSymbol().getRepresentation(), currentSymbol)) {
                     areSymbolsEqual = false;
                 }
             }
-            return isOver_util(areSymbolsEqual, curStr);
+            return setIsVictory(areSymbolsEqual, currentSymbol);
         }
         return false;
     }
 
     private boolean diagonal1Check(int a, int b, Cell[][] board) {
         boolean areSymbolsEqual = true;
-        String curStr = board[a][b].getSymbol().getRepresentation();
-        if (b + checkSize <= board[a].length &&
-                a + checkSize <= board.length) {
+        String currentSymbol = board[a][b].getSymbol().getRepresentation();
+        if (b + victorySize <= board[a].length &&
+                a + victorySize <= board.length) {
 
-            for (int c = 0; c < checkSize; c++) {
-                if (!Objects.equals(board[a + c][b + c].getSymbol().getRepresentation(), curStr)) {
+            for (int c = 0; c < victorySize; c++) {
+                if (!Objects.equals(board[a + c][b + c].getSymbol().getRepresentation(), currentSymbol)) {
                     areSymbolsEqual = false;
                 }
             }
-            return isOver_util(areSymbolsEqual, curStr);
+            return setIsVictory(areSymbolsEqual, currentSymbol);
         }
         return false;
     }
 
     private boolean diagonal2Check(int a, int b, Cell[][] board) {
         boolean areSymbolsEqual = true;
-        String curStr = board[a][b].getSymbol().getRepresentation();
+        String currentSymbol = board[a][b].getSymbol().getRepresentation();
 
-        if (b + checkSize <= board[a].length &&
-                a - checkSize >= -1) {
+        if (b + victorySize <= board[a].length &&
+                a - victorySize >= -1) {
 
-            for (int c = 0; c < checkSize; c++) {
-                if (!Objects.equals(board[a - c][b + c].getSymbol().getRepresentation(), curStr)) {
+            for (int c = 0; c < victorySize; c++) {
+                if (!Objects.equals(board[a - c][b + c].getSymbol().getRepresentation(), currentSymbol)) {
                     areSymbolsEqual = false;
                 }
             }
-            return isOver_util(areSymbolsEqual, curStr);
+            return setIsVictory(areSymbolsEqual, currentSymbol);
         }
         return false;
     }
