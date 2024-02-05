@@ -25,7 +25,7 @@ public class UserInteraction {
                 if (isIntChoiceValid(result, min, max)) {
                     isRunning = false;
                 } else {
-                    System.out.println("You must choose a game between " + min + " and " + max);
+                    System.out.println("You must choose a number between " + min + " and " + max);
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Entry invalid, try again:");

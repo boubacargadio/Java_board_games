@@ -2,7 +2,6 @@ package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.players;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.Symbol;
@@ -14,6 +13,7 @@ public class Player implements IPlayer {
     private Symbol symbol;
     private boolean isArtificial;
     private final UserInteraction userInteraction = new UserInteraction();
+    private final View view = new View();
 
     public Player(int number, Symbol symbol, boolean isArtificial) {
         this.number = number;
@@ -56,12 +56,12 @@ public class Player implements IPlayer {
     }
 
     private int getColumnMove(int max) {
-        View.displayLine("Select a column to target:");
+        view.displaySelectCol();
         return userInteraction.getIntChoice(1, max);
     }
 
     private int getRowMove(int max) {
-        View.displayLine("Select a row to target:");
+        view.displaySelectRow();
         return userInteraction.getIntChoice(1, max);
     }
 
@@ -89,6 +89,7 @@ public class Player implements IPlayer {
             return getColumnMove(amountOfColumns) - 1;
         }
     }
+
     public int[] getPlayerMove(int size) {
         int[] playerMove = new int[2];
         playerMove[0] = getRowMove(size) - 1;

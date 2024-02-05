@@ -9,6 +9,7 @@ public class BoardGames {
     private GameIdentity selectedGame;
 
     private final UserInteraction userInteraction = new UserInteraction();
+    private final View view = new View();
 
     public BoardGames() {
     }
@@ -29,7 +30,7 @@ public class BoardGames {
     public void selectGame() {
         GameIdentity[] gamesList = GameIdentity.values();
 
-        View.displayChooseGame(gamesList);
+        view.displayChooseGame(gamesList);
         int playerSelection = userInteraction.getIntChoice(1, gamesList.length);
 
         setSelectedGame(findGame(playerSelection - 1));

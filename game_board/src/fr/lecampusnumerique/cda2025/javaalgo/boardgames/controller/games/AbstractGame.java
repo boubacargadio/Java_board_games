@@ -18,6 +18,7 @@ public abstract class AbstractGame implements IGame {
 
     private final VictoryChecker victoryChecker;
     private final UserInteraction userInteraction = new UserInteraction();
+    private final View view = new View();
 
     public AbstractGame(GameIdentity gameIdentity, int amountOfRows, int amountOfColumns) {
         this.gameIdentity = gameIdentity;
@@ -78,7 +79,7 @@ public abstract class AbstractGame implements IGame {
 
     private void definePlayers() {
         int howManyPlayers;
-        View.displayChooseHowManyPlayers();
+        view.displayChooseHowManyPlayers();
         howManyPlayers = userInteraction.getIntChoice(0, 2);
 
         buildPlayers(howManyPlayers);
@@ -93,7 +94,8 @@ public abstract class AbstractGame implements IGame {
     protected void playerTurn(Player player) {
         boolean running = true;
         while (running) {
-            System.out.println("Player turn, playing move " + player.getRepresentation());
+            view.displayNewTurn(player);
+
             int[] move;
 
             if (player.isArtificial()) {
@@ -109,7 +111,7 @@ public abstract class AbstractGame implements IGame {
                 cell.setSymbol(player.getSymbol());
                 running = false;
             } else {
-                System.out.println("Case déjà remplie. Veuillez en choisir une autre.");
+                view.displayCellNonAvailable();
             }
         }
     }

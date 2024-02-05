@@ -1,14 +1,15 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.view;
 
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games.GameIdentity;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.players.Player;
 
 public class View {
-    public static void displayChooseHowManyPlayers(){
+    public void displayChooseHowManyPlayers(){
         System.out.println("How many players want to play? ");
         System.out.println("Press 2 for 2 players |  1 to play against computer |  or 0 to watch the computer playing!");
     }
 
-    public static void displayChooseGame(GameIdentity[] gamesList){
+    public void displayChooseGame(GameIdentity[] gamesList){
         System.out.println("Welcome to our boardgames platform. Which game do you want to play?");
 
         for (GameIdentity gameIdentity : gamesList) {
@@ -17,7 +18,20 @@ public class View {
         }
     }
 
-    public static void displayLine(String line) {
-        System.out.println(line);
+    public void displayNewTurn(Player player) {
+        System.out.println("Player turn, playing move " + player.getRepresentation());
     }
+
+    public void displayCellNonAvailable(){
+        System.out.println("Cellule non disponible. Veuillez en choisir une autre.");
+    }
+
+    public void displaySelectRow(){
+        System.out.println("Select a row to target:");
+    }
+    public void displaySelectCol(){
+        System.out.println("Select a column to target:");
+    }
+
+
 }
