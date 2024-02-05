@@ -57,7 +57,7 @@ public abstract class AbstractGame implements Game {
             board.displayBoard();
         }
 
-        if(victoryChecker.isVictory(board.getBoard())) {
+        if (victoryChecker.isVictory(board.getBoard())) {
             String winner = victoryChecker.getWinner();
             System.out.println("Player " + winner + " won!");
         } else {
@@ -89,11 +89,22 @@ public abstract class AbstractGame implements Game {
     public void restart() {
     }
 
+    private void realPlayerTurn() {
+
+    }
+
     public void playerTurn(Player player) {
         boolean running = true;
         while (running) {
             System.out.println("Player turn, playing move " + player.getRepresentation());
-            int[] move = player.getPlayerMove();
+            int[] move;
+
+            if (player.isArtificial()) {
+                move = player.getArtificialPlayerMove(board.getCellsAvailable());
+            } else {
+                move = player.getPlayerMove();
+            }
+
             Cell cell = board.getBoard()[move[0]][move[1]];
 
             if (cell.isAvailable()) {
