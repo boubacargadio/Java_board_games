@@ -5,28 +5,26 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.players.Player;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.Symbol;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.victoryChecker.VictoryChecker;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.View;
 
-import java.util.Scanner;
-
-public abstract class AbstractGame implements Game {
-    private GameIdentity gameIdentity;
+public abstract class AbstractGame implements IGame {
+    private final GameIdentity gameIdentity;
     private Player player1;
     private Player player2;
     private Symbol[] symbols;
     private final Board board;
     private boolean isOver;
 
-    private Scanner scanner = new Scanner(System.in);
+    private final VictoryChecker victoryChecker;
+    private final UserInteraction userInteraction = new UserInteraction();
+    private final View view = new View();
 
-    private VictoryChecker victoryChecker = new VictoryChecker();
-
-    abstract void defineSymbols();
-
-    public AbstractGame(GameIdentity gameIdentity, int amountOfRows, int amountOfColumns, int checkSize) {
+    public AbstractGame(GameIdentity gameIdentity, int amountOfRows, int amountOfColumns) {
         this.gameIdentity = gameIdentity;
         this.board = new Board(amountOfRows, amountOfColumns);
-        victoryChecker.setCheckSize(checkSize);
-        defineSymbols();
+        this.victoryChecker = new VictoryChecker(gameIdentity.getVictorySize());
+        this.symbols = gameIdentity.getSymbols();
     }
 
     public Symbol[] getSymbols() {
@@ -35,6 +33,10 @@ public abstract class AbstractGame implements Game {
 
     public void setSymbols(Symbol[] symbols) {
         this.symbols = symbols;
+    }
+
+    public Board getBoard() {
+        return board;
     }
 
     protected boolean getIsOver() {
@@ -52,17 +54,15 @@ public abstract class AbstractGame implements Game {
 
         Player currentPlayer = player1;
         while (!board.isFull() && !victoryChecker.isVictory(board.getBoard())) {
-            if (gameIdentity == GameIdentity.CONNECT4) {
-                playConnect4Turn(currentPlayer);
-            } else {
-                playerTurn(currentPlayer);
-            }
+            playerTurn(currentPlayer);
+
             currentPlayer = switchPlayer(currentPlayer);
+            board.isBoardFull();
             board.displayBoard();
         }
 
         if (victoryChecker.isVictory(board.getBoard())) {
-            String winner = victoryChecker.getWinner();
+            String winner = victoryChecker.getWinningSymbol();
             System.out.println("Player " + winner + " won!");
         } else {
             System.out.println("You both lost you're shit.");
@@ -80,9 +80,8 @@ public abstract class AbstractGame implements Game {
 
     private void definePlayers() {
         int howManyPlayers;
-        System.out.println("How many players want to play? ");
-        System.out.println("Press 2 for 2 players |  1 to play against computer |  or 0 to watch the computer playing!");
-        howManyPlayers = Integer.parseInt(scanner.next());
+        view.displayChooseHowManyPlayers();
+        howManyPlayers = userInteraction.getIntChoice(0, 2);
 
         buildPlayers(howManyPlayers);
     }
@@ -93,16 +92,17 @@ public abstract class AbstractGame implements Game {
     public void restart() {
     }
 
-    private void playerTurn(Player player) {
+    protected void playerTurn(Player player) {
         boolean running = true;
         while (running) {
-            System.out.println("Player turn, playing move " + player.getRepresentation());
+            view.displayNewTurn(player);
+
             int[] move;
 
             if (player.isArtificial()) {
                 move = player.getArtificialPlayerMove(board.getCellsAvailable());
             } else {
-                move = player.getPlayerMove();
+                move = player.getPlayerMove(gameIdentity.getSize());
             }
 
             Cell cell = board.getBoard()[move[0]][move[1]];
@@ -112,44 +112,9 @@ public abstract class AbstractGame implements Game {
                 cell.setSymbol(player.getSymbol());
                 running = false;
             } else {
-                System.out.println("Case déjà remplie. Veuillez en choisir une autre.");
+                view.displayCellNonAvailable();
             }
         }
-    }
-
-    private int setOwnerConnect4(int col) {
-        Cell[][] board = this.board.getBoard();
-
-        for (int row = board.length - 1; row >= 0; row--) {
-            Cell cell = board[row][col];
-            if (cell.isAvailable()) {
-                return row;
-            }
-        }
-        return -1;
-    }
-
-    private void playConnect4Turn(Player player) {
-        boolean running = true;
-        int[] move = new int[2];
-        int amountOfColumns = board.getAmountOfColumns();
-
-        while (running) {
-            System.out.println("Player turn, playing move " + player.getRepresentation());
-
-            int col = player.getPlayerMoveForConnect4(amountOfColumns);
-            int row = setOwnerConnect4(col);
-
-            if (row == -1) {
-                System.out.println("This column is full, chose another one");
-            } else {
-                move[0] = row;
-                move[1] = col;
-                running = false;
-            }
-        }
-        Cell cell = board.getBoard()[move[0]][move[1]];
-        cell.setSymbol(player.getSymbol());
     }
 
     private Player switchPlayer(Player currentPlayer) {

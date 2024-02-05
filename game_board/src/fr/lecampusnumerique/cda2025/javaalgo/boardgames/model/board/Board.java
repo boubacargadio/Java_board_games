@@ -2,6 +2,7 @@ package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.board;
 
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.EmptySymbol;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class Board {
     private final int amountOfColumns;
     private final Cell[][] board;
     private boolean isFull;
+    private final View view = new View();
 
     private Cell[] getOneRow() {
         Cell[] row = new Cell[amountOfColumns];
@@ -49,10 +51,6 @@ public class Board {
     // ************* ATTRIBUTES METHODS
     // *******
 
-    public int getAmountOfRows() {
-        return amountOfRows;
-    }
-
     public int getAmountOfColumns() {
         return amountOfColumns;
     }
@@ -69,30 +67,16 @@ public class Board {
         return this.isFull = isFull;
     }
 
-    ;
 
     // *******
     // ************* METHODS
     // *******
 
     public void displayBoard() {
-        String endRow = "|";
-        StringBuilder horizontalBorder = new StringBuilder();
-        horizontalBorder.append(" -----".repeat(amountOfColumns));
-
-        System.out.println(horizontalBorder);
-
-        for (Cell[] row : board) {
-            for (Cell cell : row) {
-                System.out.printf("|  " + cell.getSymbol().getRepresentation() + "  ");
-            }
-            System.out.printf(endRow);
-            System.out.println();
-            System.out.println(horizontalBorder);
-        }
+        view.displayBoardDrawing(getBoard(), getAmountOfColumns());
     }
 
-    protected boolean isBoardFull(){
+    public boolean isBoardFull(){
         boolean isFull = true;
        for (Cell[] row : board) {
            for (Cell cell: row) {

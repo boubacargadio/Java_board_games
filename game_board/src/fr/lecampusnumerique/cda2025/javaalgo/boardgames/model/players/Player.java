@@ -1,24 +1,19 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.players;
 
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.Symbol;
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
-
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.Symbol;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.View;
 
 public class Player implements IPlayer {
     private int number;
     private Symbol symbol;
     private boolean isArtificial;
     private final UserInteraction userInteraction = new UserInteraction();
-
-    private void definePlayerSymbol(int playerNumber, Symbol result1, Symbol result2) {
-        this.symbol = (playerNumber == 1) ? result1 : result2;
-    }
-
-    Scanner scanner = new Scanner(System.in);
+    private final View view = new View();
 
     public Player(int number, Symbol symbol, boolean isArtificial) {
         this.number = number;
@@ -60,12 +55,14 @@ public class Player implements IPlayer {
         return getSymbol().getRepresentation();
     }
 
-    private int getColumnMove() {
-        return userInteraction.askPlayerForMove("column");
+    private int getColumnMove(int max) {
+        view.displaySelectCol();
+        return userInteraction.getIntChoice(1, max);
     }
 
-    private int getRowMove() {
-        return userInteraction.askPlayerForMove("row");
+    private int getRowMove(int max) {
+        view.displaySelectRow();
+        return userInteraction.getIntChoice(1, max);
     }
 
     public int[] getArtificialPlayerMove(List<int[]> availableCells) {
@@ -89,13 +86,14 @@ public class Player implements IPlayer {
             Random randomizer = new Random();
             return randomizer.nextInt(amountOfColumns);
         } else {
-            return getColumnMove() - 1;
+            return getColumnMove(amountOfColumns) - 1;
         }
     }
-    public int[] getPlayerMove() {
+
+    public int[] getPlayerMove(int size) {
         int[] playerMove = new int[2];
-        playerMove[0] = getRowMove() - 1;
-        playerMove[1] = getColumnMove() - 1;
+        playerMove[0] = getRowMove(size) - 1;
+        playerMove[1] = getColumnMove(size) - 1;
 
         return playerMove;
     }
