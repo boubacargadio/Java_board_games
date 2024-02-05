@@ -16,4 +16,8 @@ public class View {
             System.out.println("Press " + gameNumber + " to play " + gameIdentity.getName());
         }
     }
+
+    public static void displayLine(String line) {
+        System.out.println(line);
+    }
 }

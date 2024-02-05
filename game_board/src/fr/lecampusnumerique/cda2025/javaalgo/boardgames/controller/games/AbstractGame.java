@@ -13,7 +13,6 @@ public abstract class AbstractGame implements IGame {
     private Player player1;
     private Player player2;
     private Symbol[] symbols;
-
     private final Board board;
     private boolean isOver;
 
@@ -100,7 +99,7 @@ public abstract class AbstractGame implements IGame {
             if (player.isArtificial()) {
                 move = player.getArtificialPlayerMove(board.getCellsAvailable());
             } else {
-                move = player.getPlayerMove();
+                move = player.getPlayerMove(gameIdentity.getSize());
             }
 
             Cell cell = board.getBoard()[move[0]][move[1]];

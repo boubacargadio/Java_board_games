@@ -16,6 +16,6 @@ public interface IPlayer {
 
     String getRepresentation();
 
-    int[] getPlayerMove();
+    int[] getPlayerMove(int max);
     void playerTurn();
 }

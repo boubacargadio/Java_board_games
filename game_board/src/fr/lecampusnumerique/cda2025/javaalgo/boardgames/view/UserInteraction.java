@@ -33,21 +33,4 @@ public class UserInteraction {
         }
         return result;
     }
-
-    public int askPlayerForMove(String move) {
-        boolean running = true;
-        int answer = 0;
-        do {
-            System.out.println("Enter a " + move);
-            try {
-                answer = Integer.parseInt(scanner.next());
-                System.out.println(move + " is: " + answer);
-                running = false;
-            } catch (Exception e) {
-                System.out.println("Entry a number!");
-            }
-        } while (running);
-        return answer;
-    }
-
 }
