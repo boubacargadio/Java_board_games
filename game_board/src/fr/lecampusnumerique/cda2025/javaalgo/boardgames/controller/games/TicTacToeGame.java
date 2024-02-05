@@ -6,7 +6,7 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.TicTacToeS
 public class TicTacToeGame extends AbstractGame {
 
     public TicTacToeGame() {
-        super(GameIdentity.TICTACTOE, 3, 3);
+        super(GameIdentity.TICTACTOE, 3, 3, 3);
     }
 
     @Override

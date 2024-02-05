@@ -4,15 +4,15 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.EmptySymbol;
 
 public class VictoryChecker implements Victory {
-    private final int checkSize;
-
-    public VictoryChecker(int checkSize) {
-        this.checkSize = checkSize;
-    }
+    private int checkSize = 0;
 
     // *****
     // ************ METHODS
     // *****
+
+    public void setCheckSize(int size) {
+        checkSize = size;
+    }
 
     private boolean isOver_util(boolean same, String curStr) {
         if (same && curStr != EmptySymbol.EMPTY.getRepresentation()) {
@@ -39,8 +39,9 @@ public class VictoryChecker implements Victory {
                     areSymbolsEqual = false;
                 }
             }
+            return isOver_util(areSymbolsEqual, curStr);
         }
-        return isOver_util(areSymbolsEqual, curStr);
+        return false;
     }
 
     private boolean columnCheck(int a, int b, Cell[][] board) {
@@ -52,8 +53,9 @@ public class VictoryChecker implements Victory {
                     areSymbolsEqual = false;
                 }
             }
+            return isOver_util(areSymbolsEqual, curStr);
         }
-        return isOver_util(areSymbolsEqual, curStr);
+        return false;
     }
 
     private boolean diagonal1Check(int a, int b, Cell[][] board) {
@@ -67,13 +69,15 @@ public class VictoryChecker implements Victory {
                     areSymbolsEqual = false;
                 }
             }
+            return isOver_util(areSymbolsEqual, curStr);
         }
-        return isOver_util(areSymbolsEqual, curStr);
+        return false;
     }
 
     private boolean diagonal2Check(int a, int b, Cell[][] board) {
         boolean areSymbolsEqual = true;
         String curStr = board[a][b].getSymbol().getRepresentation();
+
         if (b + checkSize <= board[a].length &&
                 a - checkSize >= -1) {
 
@@ -82,8 +86,9 @@ public class VictoryChecker implements Victory {
                     areSymbolsEqual = false;
                 }
             }
+            return isOver_util(areSymbolsEqual, curStr);
         }
-        return isOver_util(areSymbolsEqual, curStr);
+        return false;
     }
 
     public boolean isVictory(Cell[][] board) {

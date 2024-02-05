@@ -17,13 +17,14 @@ public abstract class AbstractGame implements Game {
 
     private Scanner scanner = new Scanner(System.in);
 
-    private VictoryChecker victoryChecker = new VictoryChecker(0);
+    private VictoryChecker victoryChecker = new VictoryChecker();
 
     abstract void defineSymbols();
 
-    public AbstractGame(GameIdentity gameIdentity, int amountOfRows, int amountOfColumns) {
+    public AbstractGame(GameIdentity gameIdentity, int amountOfRows, int amountOfColumns, int checkSize) {
         this.gameIdentity = gameIdentity;
         this.board = new Board(amountOfRows, amountOfColumns);
+        victoryChecker.setCheckSize(checkSize);
         defineSymbols();
     }
 
@@ -87,6 +88,7 @@ public abstract class AbstractGame implements Game {
 
             if (board.getBoard()[move[0]][move[1]].isAvailable()) {
                 board.getBoard()[move[0]][move[1]].setSymbol(player.getSymbol());
+
                 running = false;
             } else {
                 System.out.println("Case déjà remplie. Veuillez en choisir une autre.");

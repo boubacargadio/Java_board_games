@@ -5,7 +5,7 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.Symbol;
 
 public class Connect4Game extends AbstractGame {
     public Connect4Game() {
-        super(GameIdentity.CONNECT4, 6, 7);
+        super(GameIdentity.CONNECT4, 6, 7, 4);
     }
 
     @Override
