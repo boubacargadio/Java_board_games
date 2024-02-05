@@ -1,4 +1,10 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.board;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.board;
+
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.EmptySymbol;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
 
@@ -86,6 +92,19 @@ public class Board {
         }
     }
 
+    protected boolean isBoardFull(){
+        boolean isFull = true;
+       for (Cell[] row : board) {
+           for (Cell cell: row) {
+               if (cell.getSymbol() == EmptySymbol.EMPTY){
+                   isFull = false;
+               }
+           }
+       }
+        setIsFull(isFull);
+       return isFull;
+    }
+
     public Cell[] getRow(int row) {
         return board[row];
     }
@@ -99,6 +118,25 @@ public class Board {
         return column;
     }
 
+    public List<int[]> getCellsAvailable(){
+        List<int[]> availableCells = new ArrayList<int[]>();
+
+        for (int i = 0; i < board.length; i++) {
+            Cell[] row = board[i];
+
+            for (int j = 0; j < row.length; j++) {
+                Cell cell = row[j];
+
+                if(cell.isAvailable()) {
+                    int[] move = new int[]{i, j};
+                    availableCells.add(move);
+                }
+            }
+        }
+        return availableCells;
+    }
+
     public void clean() {
+        createBoard();
     }
 }

@@ -1,9 +1,8 @@
-import fr.lecampusnumerique.cda2025.javaalgo.boardgames.players.PlayerTurn;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.BoardGames;
 
 public class MainDebug {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        PlayerTurn playerTurn = new PlayerTurn();
-        playerTurn.play();
+        BoardGames boardGames = new BoardGames();
+        boardGames.selectGame();
     }
 }

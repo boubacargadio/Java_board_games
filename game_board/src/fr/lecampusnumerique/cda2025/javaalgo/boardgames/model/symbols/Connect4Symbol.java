@@ -1,7 +1,6 @@
-package fr.lecampusnumerique.cda2025.javaalgo.boardgames.symbols;
+package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols;
 
-public enum Connect4Symbol implements Symbols {
-    EMPTY(" "),
+public enum Connect4Symbol implements Symbol {
     R("R"),
     Y("Y");
 
