@@ -3,8 +3,11 @@ package fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.victoryChecker;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.EmptySymbol;
 
+import java.util.Objects;
+
 public class VictoryChecker implements Victory {
     private int checkSize = 0;
+    private String winningSymbol;
 
     // *****
     // ************ METHODS
@@ -14,17 +17,17 @@ public class VictoryChecker implements Victory {
         checkSize = size;
     }
 
-    private boolean isOver_util(boolean same, String curStr) {
-        if (same && curStr != EmptySymbol.EMPTY.getRepresentation()) {
-//            if (curStr.equals(player1.getRepresentation())) {
-//               // display();
-//                // view.println("Joueur 1 a gagné!");
-//                return true;
-//            } else if (curStr.equals(player2.getRepresentation())) {
-//               // display();
-//                // view.println("Joueur 2 a gagné!");
-//                return true;
-//            }
+    public String getWinner() {
+        return winningSymbol;
+    }
+
+    public void setWinner(String winningSymbol) {
+        this.winningSymbol = winningSymbol;
+    }
+
+    private boolean isOver_util(boolean same, String currentSymbol) {
+        if (same && !Objects.equals(currentSymbol, EmptySymbol.EMPTY.getRepresentation())) {
+            setWinner(currentSymbol);
             return true;
         }
         return false;
@@ -35,7 +38,7 @@ public class VictoryChecker implements Victory {
         String curStr = board[a][b].getSymbol().getRepresentation();
         if (b + checkSize <= board[a].length) {
             for (int c = 0; c < checkSize; c++) {
-                if (board[a][b + c].getSymbol().getRepresentation() != curStr) {
+                if (!Objects.equals(board[a][b + c].getSymbol().getRepresentation(), curStr)) {
                     areSymbolsEqual = false;
                 }
             }
@@ -49,7 +52,7 @@ public class VictoryChecker implements Victory {
         String curStr = board[a][b].getSymbol().getRepresentation();
         if (a + checkSize <= board.length) {
             for (int c = 0; c < checkSize; c++) {
-                if (board[a + c][b].getSymbol().getRepresentation() != curStr) {
+                if (!Objects.equals(board[a + c][b].getSymbol().getRepresentation(), curStr)) {
                     areSymbolsEqual = false;
                 }
             }
@@ -65,7 +68,7 @@ public class VictoryChecker implements Victory {
                 a + checkSize <= board.length) {
 
             for (int c = 0; c < checkSize; c++) {
-                if (board[a + c][b + c].getSymbol().getRepresentation() != curStr) {
+                if (!Objects.equals(board[a + c][b + c].getSymbol().getRepresentation(), curStr)) {
                     areSymbolsEqual = false;
                 }
             }
@@ -82,7 +85,7 @@ public class VictoryChecker implements Victory {
                 a - checkSize >= -1) {
 
             for (int c = 0; c < checkSize; c++) {
-                if (board[a - c][b + c].getSymbol().getRepresentation() != curStr) {
+                if (!Objects.equals(board[a - c][b + c].getSymbol().getRepresentation(), curStr)) {
                     areSymbolsEqual = false;
                 }
             }

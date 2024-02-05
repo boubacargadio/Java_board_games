@@ -56,7 +56,14 @@ public abstract class AbstractGame implements Game {
             currentPlayer = switchPlayer(currentPlayer);
             board.displayBoard();
         }
-        System.out.println("Game over or victory");
+
+        if(victoryChecker.isVictory(board.getBoard())) {
+            String winner = victoryChecker.getWinner();
+            System.out.println("Player " + winner + " won!");
+        } else {
+            System.out.println("You both lost you're shit.");
+        }
+
     }
 
     private void buildPlayers(int players) {
@@ -81,7 +88,6 @@ public abstract class AbstractGame implements Game {
 
     public void restart() {
     }
-
 
     public void playerTurn(Player player) {
         boolean running = true;
