@@ -1,6 +1,7 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.view;
 
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games.GameIdentity;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.players.Player;
 
 public class View {
@@ -15,6 +16,23 @@ public class View {
         for (GameIdentity gameIdentity : gamesList) {
             int gameNumber = gameIdentity.ordinal() + 1;
             System.out.println("Press " + gameNumber + " to play " + gameIdentity.getName());
+        }
+    }
+
+    public void displayBoardDrawing(Cell[][] board, int amountOfColumns) {
+        String endRow = "|";
+        StringBuilder horizontalBorder = new StringBuilder();
+        horizontalBorder.append(" -----".repeat(amountOfColumns));
+
+        System.out.println(horizontalBorder);
+
+        for (Cell[] row : board) {
+            for (Cell cell : row) {
+                System.out.printf("|  " + cell.getSymbol().getRepresentation() + "  ");
+            }
+            System.out.printf(endRow);
+            System.out.println();
+            System.out.println(horizontalBorder);
         }
     }
 

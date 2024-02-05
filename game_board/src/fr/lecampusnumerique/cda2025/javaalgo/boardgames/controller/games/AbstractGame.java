@@ -57,6 +57,7 @@ public abstract class AbstractGame implements IGame {
             playerTurn(currentPlayer);
 
             currentPlayer = switchPlayer(currentPlayer);
+            board.isBoardFull();
             board.displayBoard();
         }
 
