@@ -1,6 +1,7 @@
 package fr.lecampusnumerique.cda2025.javaalgo.boardgames.controller.games;
 
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.board.Board;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.players.Player;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.Symbol;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.victoryChecker.VictoryChecker;
@@ -58,7 +59,7 @@ public abstract class AbstractGame implements Game {
         System.out.println("Game over or victory");
     }
 
-    private void buildPlayers(int players){
+    private void buildPlayers(int players) {
         boolean isPlayer1Artificial = players == 0;
         boolean isPlayer2Artificial = players == 0 || players == 1;
 
@@ -66,7 +67,7 @@ public abstract class AbstractGame implements Game {
         player2 = new Player(2, symbols[1], isPlayer2Artificial);
     }
 
-    private void definePlayers(){
+    private void definePlayers() {
         int howManyPlayers;
         System.out.println("How many players want to play? ");
         System.out.println("Press 2 for 2 players |  1 to play against computer |  or 0 to watch the computer playing!");
@@ -75,30 +76,28 @@ public abstract class AbstractGame implements Game {
         buildPlayers(howManyPlayers);
     }
 
-    public void stop() {    }
+    public void stop() {
+    }
 
-    public void restart() {    }
+    public void restart() {
+    }
 
 
     public void playerTurn(Player player) {
         boolean running = true;
-        while(running) {
+        while (running) {
             System.out.println("Player turn, playing move " + player.getRepresentation());
             int[] move = player.getPlayerMove();
+            Cell cell = board.getBoard()[move[0]][move[1]];
 
-            if (board.getBoard()[move[0]][move[1]].isAvailable()) {
-                board.getBoard()[move[0]][move[1]].setSymbol(player.getSymbol());
+            if (cell.isAvailable()) {
 
+                cell.setSymbol(player.getSymbol());
                 running = false;
             } else {
                 System.out.println("Case déjà remplie. Veuillez en choisir une autre.");
             }
         }
-
-        // Check if move is correct --> with the move; check if the cell in board is empty
-        // move [4, 2] --> check if board[2][4] is empty / available
-        // if error --> getPlayerMove again
-        // if good --> setOwner of cell to belong to player && check for victory
     }
 
 
