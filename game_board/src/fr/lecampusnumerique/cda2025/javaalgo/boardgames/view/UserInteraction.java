@@ -8,8 +8,38 @@ import java.util.Scanner;
 public class UserInteraction {
     private final Scanner scanner = new Scanner(System.in);
 
-    private boolean isGameChoiceValid(int choice, int options){
+    // *************
+    // ************* METHODS
+    // *************
+
+    private boolean isGameChoiceValid(int choice, int options) {
         return (choice <= options) && choice > 0;
+    }
+
+    private boolean isIntChoiceValid(int choice, int min, int max) {
+        return (choice >= min) && (choice <= max);
+    }
+
+    public int getIntChoice(int min, int max) {
+        boolean isRunning = true;
+        int result = -1;
+
+        while(isRunning){
+            try {
+                result = Integer.parseInt(scanner.next());
+
+                if (isIntChoiceValid(result, min, max)) {
+                    isRunning = false;
+                } else {
+                    System.out.println("You must choose a game between " + min + " and " + max);
+                }
+
+                isRunning = false;
+            } catch (NumberFormatException e) {
+                System.out.println("Entry invalid, try again:");
+            }
+        }
+        return result;
     }
 
     public int getGameChoice() {
@@ -27,8 +57,8 @@ public class UserInteraction {
             try {
                 result = Integer.parseInt(scanner.nextLine());
 
-                if(isGameChoiceValid(result, gamesList.length)) {
-                isRunning = false;
+                if (isGameChoiceValid(result, gamesList.length)) {
+                    isRunning = false;
                 } else {
                     System.out.println("You must choose a game between 1 and " + gamesList.length);
                 }

@@ -5,6 +5,8 @@ import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.cell.Cell;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.players.Player;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.symbols.Symbol;
 import fr.lecampusnumerique.cda2025.javaalgo.boardgames.model.victoryChecker.VictoryChecker;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.UserInteraction;
+import fr.lecampusnumerique.cda2025.javaalgo.boardgames.view.View;
 
 import java.util.Scanner;
 
@@ -20,6 +22,9 @@ public abstract class AbstractGame implements IGame {
     private final Scanner scanner = new Scanner(System.in);
 
     private final VictoryChecker victoryChecker;
+
+    private final View view = new View();
+    private final UserInteraction userInteraction = new UserInteraction();
 
     public AbstractGame(GameIdentity gameIdentity, int amountOfRows, int amountOfColumns) {
         this.gameIdentity = gameIdentity;
@@ -39,6 +44,7 @@ public abstract class AbstractGame implements IGame {
     public Board getBoard() {
         return board;
     }
+
     protected boolean getIsOver() {
         return this.isOver;
     }
@@ -54,7 +60,7 @@ public abstract class AbstractGame implements IGame {
 
         Player currentPlayer = player1;
         while (!board.isFull() && !victoryChecker.isVictory(board.getBoard())) {
-                playerTurn(currentPlayer);
+            playerTurn(currentPlayer);
 
             currentPlayer = switchPlayer(currentPlayer);
             board.displayBoard();
@@ -79,9 +85,8 @@ public abstract class AbstractGame implements IGame {
 
     private void definePlayers() {
         int howManyPlayers;
-        System.out.println("How many players want to play? ");
-        System.out.println("Press 2 for 2 players |  1 to play against computer |  or 0 to watch the computer playing!");
-        howManyPlayers = Integer.parseInt(scanner.next());
+        view.displayChooseGame();
+        howManyPlayers = userInteraction.getIntChoice(0, 2);
 
         buildPlayers(howManyPlayers);
     }
