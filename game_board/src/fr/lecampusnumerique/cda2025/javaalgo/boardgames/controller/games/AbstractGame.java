@@ -79,11 +79,26 @@ public abstract class AbstractGame implements Game {
     }
 
     private void definePlayers() {
-        int howManyPlayers;
+        int howManyPlayers = 0;
+
+        boolean running = true;
         System.out.println("How many players want to play? ");
         System.out.println("Press 2 for 2 players |  1 to play against computer |  or 0 to watch the computer playing!");
-        howManyPlayers = Integer.parseInt(scanner.next());
+        while (running){
+            running = false;
+            try {
+                howManyPlayers = Integer.parseInt(scanner.next());
+            } catch (Exception e){
+                System.out.println("Enter a number.");
+                running = true;
+            }
 
+            if(!running &&
+              (howManyPlayers > 2 || howManyPlayers < 0)){
+                running = true;
+                System.out.println("Enter a number between 0 and 2.");
+            }
+        }
         buildPlayers(howManyPlayers);
     }
 
